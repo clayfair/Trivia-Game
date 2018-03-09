@@ -1,6 +1,15 @@
 
 window.onload = function () {
     $("#questionOne, #timeRemaining").hide();
+ 
+    
+    
+    
+    
+    
+    
+    
+    
     $("#start").click(function () {
         //on click...
         //I want to hide the button
@@ -22,6 +31,12 @@ window.onload = function () {
             }
         }
 
+        // function correctAnswer() {
+        //     $("#start").click(function () {
+        // }
+
+
+
 
 
 
@@ -31,5 +46,6 @@ window.onload = function () {
 
 
     });
-}
 
+ 
+}
