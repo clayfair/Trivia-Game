@@ -2,7 +2,7 @@
 window.onload = function () {
     $("#timeRemaining").hide();
     $(".questionOne").hide();
-
+    $(".answerOne").hide();
     //start button needs to 
     //A) hide the start button HTML
     //B) begin the 30 sec timer 
@@ -29,14 +29,11 @@ function timer() {
             count--
             $("#timeRemaining").text("Time Remaining: " + count);
         } else {
-            myStop();
+            stop();
         }
     }
 }
 
-function myStop() {
-    clearInterval(myVar);
-}
 
 //----------------------------------------QUESTION ONE-------------------------------------------
 
@@ -52,7 +49,8 @@ function revealAnswer() {
     var newVar = setTimeout(questionOneAnswer, 1000 * 7);
     //I want to empty questionOne and replace it with
     function questionOneAnswer() {
-        $(".questionOne").html("<p id= 'question'> Time is out! <p>");
+        $(".questionOne").hide();
+        $(".answerOne").show();
     }
 }
 
