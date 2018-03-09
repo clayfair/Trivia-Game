@@ -1,51 +1,63 @@
 
 window.onload = function () {
-    $("#questionOne, #timeRemaining").hide();
- 
-    
-    
-    
-    
-    
-    
-    
-    
+    $("#timeRemaining").hide();
+    $(".questionOne").hide();
+
+    //start button needs to 
+    //A) hide the start button HTML
+    //B) begin the 30 sec timer 
+    //C) display the first question's HTML 
     $("#start").click(function () {
-        //on click...
-        //I want to hide the button
         $("#start").hide();
-        //show the questions
-        $("#questionOne, #timeRemaining").show();
-        //display a 30 second timer...
-        //starting at 30
-        var count = 7;
-        //we want to append the descending count every second 
-        var myVar = setInterval(appendCount, 1000);
-
-        function appendCount() {
-            if (count > 0) {
-                count--
-                $("#timeRemaining").text("Time Remaining: " + count);
-            } else {
-                stop();
-            }
-        }
-
-        // function correctAnswer() {
-        //     $("#start").click(function () {
-        // }
-
-
-
-
-
-
-
-
-
-
-
+        timer();
+        displayQuestionOne();
+        revealAnswer();
     });
-
- 
 }
+
+//---------------------------------TIMER CODE--------------------------------------------------
+
+function timer() {
+    $("#timeRemaining").show();
+
+
+    var count = 7;
+    var myVar = setInterval(appendCount, 1000);
+
+    function appendCount() {
+        if (count > 0) {
+            count--
+            $("#timeRemaining").text("Time Remaining: " + count);
+        } else {
+            myStop();
+        }
+    }
+}
+
+function myStop() {
+    clearInterval(myVar);
+}
+
+//----------------------------------------QUESTION ONE-------------------------------------------
+
+//onClick we run this (display the question)
+function displayQuestionOne() {
+    $(".questionOne").show();
+
+}
+
+//set in motion a timeout to reveal the answer
+function revealAnswer() {
+    //in 7 seconds...
+    var newVar = setTimeout(questionOneAnswer, 1000 * 7);
+    //I want to empty questionOne and replace it with
+    function questionOneAnswer() {
+        $(".questionOne").html("<p id= 'question'> Time is out! <p>");
+    }
+}
+
+
+
+
+  //we can display one question, set interval to match (30 seconds), at the end of 30 seconds display the answer, set interval for
+    //5 seconds then display another question 
