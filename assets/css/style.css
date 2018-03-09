@@ -33,18 +33,22 @@ h1 {
     margin-left: 150px;
 }
 
-#questions {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 25px;
-}
-
 h2 {
     font-size: 20px;
     margin-top: 10px;
 }
 
+h2:hover {
+    background-color: yellow;
+}
+
 #multiChoice {
     margin-top: 20px;
     font-size: 18px;
+}
+
+#timeRemaining, #questionOne, #multiChoice {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 25px;
 }

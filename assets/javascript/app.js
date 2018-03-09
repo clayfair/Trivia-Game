@@ -1,27 +1,25 @@
 
 window.onload = function () {
-    $("#questions").hide();
+    $("#questionOne, #timeRemaining").hide();
     $("#start").click(function () {
         //on click...
         //I want to hide the button
         $("#start").hide();
         //show the questions
-        $("#questions").show();
-        //display a 30 second timer. That entails... 
+        $("#questionOne, #timeRemaining").show();
+        //display a 30 second timer...
         //starting at 30
-        var count = 30;
-        //counting down by 1
-
-        //display count
-        //access the div containing text "Time Remaining: " and append the count 
-        // $("#timeRemaining").append(count);
-        //end at 0
-        //we want to append the count every second 
+        var count = 7;
+        //we want to append the descending count every second 
         var myVar = setInterval(appendCount, 1000);
 
         function appendCount() {
-            count--
-            $("#timeRemaining").text(count);
+            if (count > 0) {
+                count--
+                $("#timeRemaining").text("Time Remaining: " + count);
+            } else {
+                stop();
+            }
         }
 
 
