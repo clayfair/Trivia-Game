@@ -1,5 +1,6 @@
 //COUNTER IS 7 INSTEAD OF 30 FOR TESTING PURPOSES (QUICKER)
 var count = 7;
+var array = [];
 
 window.onload = function () {
     $("#timeRemaining").hide();
@@ -7,6 +8,7 @@ window.onload = function () {
     $(".answerOneTime").hide();
     $(".answerOneCorrectChoice").hide();
     $(".answerOneWrongChoice").hide();
+    $(".questionTwo").hide();
 
     //start button needs to 
     //A) hide the start button HTML
@@ -26,7 +28,9 @@ window.onload = function () {
         $(".questionOne").hide();
         $(".answerOneCorrectChoice").show();
         count = -1;
-        
+        array.push("firstQuestionAnswered");
+        nextQuestion();
+
     });
 
     //wrong answer
@@ -34,6 +38,8 @@ window.onload = function () {
         $(".questionOne").hide();
         $(".answerOneWrongChoice").show();
         count = -1;
+        array.push("firstQuestionAnswered");
+        nextQuestion();
     });
 
 }
@@ -76,13 +82,29 @@ function displayQuestionOne() {
 //set in motion a timeout to reveal the answer
 function revealAnswer() {
 
-    if(count === 0) {
+    if (count === 0) {
         $(".questionOne").hide();
         $(".answerOneTime").show();
+        array.push("firstQuestionAnswered");
+        nextQuestion();
     }
 }
 
 //-----------NEXT QUESTION (*******IGNORE THIS NOT RELEVANT TO GRADER*********)-----------
+function nextQuestion() {
+    if (array.indexOf("firstQuestionAnswered") > -1) {
+        var newVar = setTimeout(nextQuestionTwo, 1000 * 7);
+
+        function nextQuestionTwo() {
+            $(".answerOneTime").hide();
+            $(".answerOneCorrectChoice").hide();
+            $(".answerOneWrongChoice").hide();
+            $(".questionTwo").show();
+            count = 7;
+        }
+    }
+}
+
   // function myStopFunction() {
     //     clearInterval(myNewVar);
     // }
@@ -100,4 +122,4 @@ function revealAnswer() {
     //     myStopFunction();
     //}
 
-console.log("github");
+
